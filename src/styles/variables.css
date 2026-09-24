@@ -1,0 +1,49 @@
+:root {
+  /*
+   * CyberCare QA
+   *
+   * Deep cybersecurity navy
+   * Electric blue accent
+   * Cool neutral surfaces
+   */
+
+  --background: #f5f7fa;
+  --surface: #ffffff;
+  --surface-soft: #f0f3f7;
+
+  --sidebar: #0f2233;
+  --sidebar-hover: #162d42;
+  --sidebar-active: #1d3a52;
+  --sidebar-text: #dce6ef;
+  --sidebar-muted: #8fa4b7;
+
+  --text: #152536;
+  --text-secondary: #536577;
+  --text-muted: #8a99a8;
+
+  --border: #dfe5eb;
+  --border-light: #edf1f4;
+
+  --primary: #4687ff;
+  --primary-dark: #2868d8;
+  --primary-soft: #eaf2ff;
+
+  --accent: #2ec6ff;
+  --accent-soft: #e8f9ff;
+
+  --success: #2ed47a;
+  --success-soft: #e9faf1;
+
+  --warning: #ffb946;
+  --warning-soft: #fff6e5;
+
+  --danger: #f7685b;
+  --danger-soft: #fff0ee;
+
+  --shadow: 0 2px 8px rgba(15, 34, 51, 0.04);
+  --shadow-large: 0 12px 32px rgba(15, 34, 51, 0.12);
+
+  --radius-small: 6px;
+  --radius: 10px;
+  --radius-large: 14px;
+}
