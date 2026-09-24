@@ -60,6 +60,15 @@ export function Sidebar({
         className={`sidebar ${
           collapsed ? 'sidebar-collapsed' : ''
         }`}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          bottom: 0,
+          height: '100vh',
+          zIndex: 100,
+          overflow: 'visible',
+        }}
       >
         <div className="sidebar-brand">
           <div className="brand-mark">
@@ -161,7 +170,7 @@ export function Sidebar({
 
               <div className="user-role">
                 {user.role === 'admin'
-                  ? 'QA Manager'
+                  ? 'QA Coordinator'
                   : 'QA Reviewer'}
               </div>
             </div>
@@ -234,6 +243,10 @@ export function Sidebar({
             ? 'Show sidebar'
             : 'Hide sidebar'
         }
+        style={{
+          position: 'fixed',
+          zIndex: 150,
+        }}
       >
         {collapsed ? '›' : '‹'}
       </button>

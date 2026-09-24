@@ -18,7 +18,7 @@ export function Dashboard() {
       : 0
 
   const pendingCount = conversations.filter(
-    (conversation) => conversation.status === 'Pending',
+    (conversation) => conversation.status === 'Not Evaluated',
   ).length
 
   return (

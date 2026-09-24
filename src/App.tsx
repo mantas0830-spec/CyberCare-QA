@@ -169,6 +169,14 @@ function App() {
             ? 'main-sidebar-hidden'
             : ''
         }`}
+        style={{
+          marginLeft: sidebarCollapsed
+            ? '68px'
+            : '248px',
+          minWidth: 0,
+          minHeight: '100vh',
+          transition: 'margin-left 180ms ease',
+        }}
       >
         {page !== 'review' && (
           <Topbar title={getTitle()} />

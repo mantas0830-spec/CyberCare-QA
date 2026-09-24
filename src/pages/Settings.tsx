@@ -41,7 +41,7 @@ export function Settings({
             Current role:
             <strong>
               {isAdmin
-                ? ' QA Manager'
+                ? ' QA Coordinator'
                 : ' QA Reviewer'}
             </strong>
           </div>

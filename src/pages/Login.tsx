@@ -54,7 +54,8 @@ export function Login({ onLogin }: LoginProps) {
 
     const account = accounts.find(
       (item) =>
-        item.email.toLowerCase() === normalizedEmail &&
+        item.email.toLowerCase() ===
+          normalizedEmail &&
         item.password === password,
     )
 
@@ -70,6 +71,7 @@ export function Login({ onLogin }: LoginProps) {
 
   const handleForgotPassword = () => {
     setError('')
+
     setForgotMessage(
       'Password recovery is not available in this demo.',
     )
@@ -97,8 +99,8 @@ export function Login({ onLogin }: LoginProps) {
               </div>
 
               <h1>
-                Turn every feedback
-                <br />S
+                Turn every conversation
+                <br />
                 into better support.
               </h1>
 
@@ -116,9 +118,13 @@ export function Login({ onLogin }: LoginProps) {
                 </div>
 
                 <div>
-                  <strong>Consistent QA reviews</strong>
+                  <strong>
+                    Consistent QA reviews
+                  </strong>
+
                   <span>
-                    Your feedback and evaluations support CyberCare.
+                    Keep evaluations structured,
+                    consistent, and easy to review.
                   </span>
                 </div>
               </div>
@@ -129,9 +135,13 @@ export function Login({ onLogin }: LoginProps) {
                 </div>
 
                 <div>
-                  <strong>Conversation insights</strong>
+                  <strong>
+                    Conversation insights
+                  </strong>
+
                   <span>
-                    See what CSMs are doing well and where they can improve.
+                    See what support agents are doing
+                    well and where they can improve.
                   </span>
                 </div>
               </div>
@@ -142,10 +152,13 @@ export function Login({ onLogin }: LoginProps) {
                 </div>
 
                 <div>
-                  <strong>Quality at scale</strong>
+                  <strong>
+                    Quality at scale
+                  </strong>
+
                   <span>
-                    Build a clearer picture of support quality
-                    across your squad.
+                    Build a clearer picture of support
+                    quality across your team.
                   </span>
                 </div>
               </div>
@@ -153,7 +166,10 @@ export function Login({ onLogin }: LoginProps) {
 
             <div className="login-brand-footer">
               <span>CyberCare QA</span>
-              <span>Quality Management Workspace</span>
+
+              <span>
+                Quality Management Workspace
+              </span>
             </div>
           </div>
         </section>
@@ -174,7 +190,8 @@ export function Login({ onLogin }: LoginProps) {
               <h2>Welcome back</h2>
 
               <p>
-                Sign in to continue to your QA workspace.
+                Sign in to continue to your QA
+                workspace.
               </p>
             </div>
 
@@ -208,7 +225,9 @@ export function Login({ onLogin }: LoginProps) {
                   <button
                     type="button"
                     className="forgot-password"
-                    onClick={handleForgotPassword}
+                    onClick={
+                      handleForgotPassword
+                    }
                   >
                     Forgot password?
                   </button>
@@ -224,7 +243,9 @@ export function Login({ onLogin }: LoginProps) {
                     }
                     value={password}
                     onChange={(event) => {
-                      setPassword(event.target.value)
+                      setPassword(
+                        event.target.value,
+                      )
                       setError('')
                       setForgotMessage('')
                     }}
@@ -246,7 +267,9 @@ export function Login({ onLogin }: LoginProps) {
                         : 'Show password'
                     }
                   >
-                    {showPassword ? 'Hide' : 'Show'}
+                    {showPassword
+                      ? 'Hide'
+                      : 'Show'}
                   </button>
                 </div>
               </div>
@@ -270,7 +293,9 @@ export function Login({ onLogin }: LoginProps) {
                     i
                   </span>
 
-                  <span>{forgotMessage}</span>
+                  <span>
+                    {forgotMessage}
+                  </span>
                 </div>
               )}
 
@@ -278,7 +303,8 @@ export function Login({ onLogin }: LoginProps) {
                 type="submit"
                 className="login-submit"
               >
-                Sign in
+                <span>Sign in</span>
+
                 <span className="login-submit-arrow">
                   →
                 </span>
@@ -291,7 +317,8 @@ export function Login({ onLogin }: LoginProps) {
               </span>
 
               <span>
-                Your workspace is protected by CyberCare QA.
+                Your workspace is protected by
+                CyberCare QA.
               </span>
             </div>
           </div>
