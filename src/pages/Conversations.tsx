@@ -44,11 +44,11 @@ const resolutionLabels: Record<
 
 const csatLabels: Record<CsatFilter, string> = {
   all: 'All CSAT',
-  '1': 'CSAT 1',
-  '2': 'CSAT 2',
-  '3': 'CSAT 3',
-  '4': 'CSAT 4',
-  '5': 'CSAT 5',
+  '1': '1',
+  '2': '2',
+  '3': '3',
+  '4': '4',
+  '5': '5',
 }
 
 const agents = Array.from(
@@ -96,14 +96,6 @@ export function Conversations({
   const [channelOpen, setChannelOpen] =
     useState(false)
 
-  const [status, setStatus] =
-    useState<
-      'all' | 'Evaluated' | 'Pending'
-    >('all')
-
-  const [statusOpen, setStatusOpen] =
-    useState(false)
-
   const [search, setSearch] = useState('')
 
   const filteredAgents = useMemo(() => {
@@ -148,13 +140,6 @@ export function Conversations({
       result = result.filter(
         (conversation) =>
           conversation.channel === channel,
-      )
-    }
-
-    if (status !== 'all') {
-      result = result.filter(
-        (conversation) =>
-          conversation.status === status,
       )
     }
 
@@ -210,7 +195,6 @@ export function Conversations({
     sampling,
     agent,
     channel,
-    status,
     resolution,
     csat,
     search,
@@ -470,69 +454,6 @@ export function Conversations({
                 }}
               >
                 Email
-              </button>
-            </div>
-          )}
-        </div>
-
-        <div className="filter-dropdown">
-          <button
-            className="filter-button"
-            onClick={() =>
-              setStatusOpen(
-                (current) => !current,
-              )
-            }
-            aria-expanded={statusOpen}
-          >
-            {status === 'all'
-              ? 'All statuses'
-              : status}{' '}
-            ▾
-          </button>
-
-          {statusOpen && (
-            <div className="filter-dropdown-menu">
-              <button
-                className={
-                  status === 'all'
-                    ? 'selected'
-                    : ''
-                }
-                onClick={() => {
-                  setStatus('all')
-                  setStatusOpen(false)
-                }}
-              >
-                All statuses
-              </button>
-
-              <button
-                className={
-                  status === 'Evaluated'
-                    ? 'selected'
-                    : ''
-                }
-                onClick={() => {
-                  setStatus('Evaluated')
-                  setStatusOpen(false)
-                }}
-              >
-                Evaluated
-              </button>
-
-              <button
-                className={
-                  status === 'Pending'
-                    ? 'selected'
-                    : ''
-                }
-                onClick={() => {
-                  setStatus('Pending')
-                  setStatusOpen(false)
-                }}
-              >
-                Pending
               </button>
             </div>
           )}
