@@ -1,16 +1,31 @@
 import { useState } from 'react'
+import type { AuthUser } from '../../types/auth'
 
 type SidebarProps = {
   currentPage: string
   onNavigate: (page: string) => void
   collapsed: boolean
   onToggle: () => void
+  user: AuthUser
+  onLogout: () => void
 }
 
 const navigation = [
-  { id: 'dashboard', label: 'Dashboard', icon: '▦' },
-  { id: 'conversations', label: 'Conversations', icon: '◫' },
-  { id: 'reports', label: 'Reports', icon: '◒' },
+  {
+    id: 'dashboard',
+    label: 'Dashboard',
+    icon: '▦',
+  },
+  {
+    id: 'conversations',
+    label: 'Conversations',
+    icon: '◫',
+  },
+  {
+    id: 'reports',
+    label: 'Reports',
+    icon: '◒',
+  },
 ]
 
 const workspaces = [
@@ -27,10 +42,17 @@ export function Sidebar({
   onNavigate,
   collapsed,
   onToggle,
+  user,
+  onLogout,
 }: SidebarProps) {
-  const [workspace, setWorkspace] = useState('NordVPN')
-  const [workspaceOpen, setWorkspaceOpen] = useState(false)
-  const [userMenuOpen, setUserMenuOpen] = useState(false)
+  const [workspace, setWorkspace] =
+    useState('NordVPN')
+
+  const [workspaceOpen, setWorkspaceOpen] =
+    useState(false)
+
+  const [userMenuOpen, setUserMenuOpen] =
+    useState(false)
 
   return (
     <>
@@ -47,13 +69,17 @@ export function Sidebar({
           <div className="brand-content">
             <div className="brand-platform-name">
               <span>CyberCare</span>
-              <span className="brand-platform-qa">QA</span>
+              <span className="brand-platform-qa">
+                QA
+              </span>
             </div>
 
             <button
               className="workspace-selector"
               onClick={() =>
-                setWorkspaceOpen((current) => !current)
+                setWorkspaceOpen(
+                  (current) => !current,
+                )
               }
               aria-expanded={workspaceOpen}
               aria-label="Select workspace"
@@ -75,7 +101,9 @@ export function Sidebar({
                   <button
                     key={item}
                     className={`workspace-option ${
-                      workspace === item ? 'selected' : ''
+                      workspace === item
+                        ? 'selected'
+                        : ''
                     }`}
                     onClick={() => {
                       setWorkspace(item)
@@ -105,7 +133,9 @@ export function Sidebar({
             <button
               key={item.id}
               className={`navigation-item ${
-                currentPage === item.id ? 'active' : ''
+                currentPage === item.id
+                  ? 'active'
+                  : ''
               }`}
               onClick={() => onNavigate(item.id)}
             >
@@ -120,13 +150,19 @@ export function Sidebar({
 
         <div className="sidebar-bottom">
           <div className="sidebar-user">
-            <div className="user-avatar">M</div>
+            <div className="user-avatar">
+              {user.name.charAt(0).toUpperCase()}
+            </div>
 
             <div className="user-details">
-              <div className="user-name">Mantas</div>
+              <div className="user-name">
+                {user.name}
+              </div>
 
               <div className="user-role">
-                Quality Coordinator
+                {user.role === 'admin'
+                  ? 'QA Manager'
+                  : 'QA Reviewer'}
               </div>
             </div>
 
@@ -136,7 +172,9 @@ export function Sidebar({
                   userMenuOpen ? 'active' : ''
                 }`}
                 onClick={() =>
-                  setUserMenuOpen((current) => !current)
+                  setUserMenuOpen(
+                    (current) => !current,
+                  )
                 }
                 aria-expanded={userMenuOpen}
                 aria-label="Open user menu"
@@ -165,6 +203,7 @@ export function Sidebar({
                     className="logout-option"
                     onClick={() => {
                       setUserMenuOpen(false)
+                      onLogout()
                     }}
                   >
                     <span className="user-dropdown-icon">

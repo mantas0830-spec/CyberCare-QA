@@ -3,11 +3,18 @@ import { conversations } from '../data/demoData'
 
 type ConversationsProps = {
   onOpen: (conversationId: string) => void
+  isAdmin: boolean
 }
 
-type SamplingFilter = 'my-assigned' | 'unassigned' | 'all'
+type SamplingFilter =
+  | 'my-assigned'
+  | 'unassigned'
+  | 'all'
 
-const samplingLabels: Record<SamplingFilter, string> = {
+const samplingLabels: Record<
+  SamplingFilter,
+  string
+> = {
   'my-assigned': 'My assigned',
   unassigned: 'Unassigned',
   all: 'All conversations',
@@ -15,11 +22,14 @@ const samplingLabels: Record<SamplingFilter, string> = {
 
 export function Conversations({
   onOpen,
+  isAdmin,
 }: ConversationsProps) {
   const [sampling, setSampling] =
     useState<SamplingFilter>('my-assigned')
 
-  const [samplingOpen, setSamplingOpen] = useState(false)
+  const [samplingOpen, setSamplingOpen] =
+    useState(false)
+
   const [search, setSearch] = useState('')
 
   const filteredConversations = useMemo(() => {
@@ -27,34 +37,52 @@ export function Conversations({
 
     if (sampling === 'my-assigned') {
       result = result.filter(
-        (conversation) => conversation.reviewer === 'Mantas',
+        (conversation) =>
+          conversation.reviewer === 'Mantas',
       )
     }
 
     if (sampling === 'unassigned') {
       result = result.filter(
-        (conversation) => conversation.reviewer === null,
+        (conversation) =>
+          conversation.reviewer === null,
       )
     }
 
     if (search.trim()) {
-      const query = search.trim().toLowerCase()
+      const query = search
+        .trim()
+        .toLowerCase()
 
-      result = result.filter((conversation) => {
-        return (
-          conversation.id.toLowerCase().includes(query) ||
-          conversation.customer.toLowerCase().includes(query) ||
-          conversation.displayName.toLowerCase().includes(query) ||
-          conversation.agent.toLowerCase().includes(query) ||
-          conversation.subject.toLowerCase().includes(query)
-        )
-      })
+      result = result.filter(
+        (conversation) => {
+          return (
+            conversation.id
+              .toLowerCase()
+              .includes(query) ||
+            conversation.customer
+              .toLowerCase()
+              .includes(query) ||
+            conversation.displayName
+              .toLowerCase()
+              .includes(query) ||
+            conversation.agent
+              .toLowerCase()
+              .includes(query) ||
+            conversation.subject
+              .toLowerCase()
+              .includes(query)
+          )
+        },
+      )
     }
 
     return result
   }, [sampling, search])
 
-  const selectSampling = (value: SamplingFilter) => {
+  const selectSampling = (
+    value: SamplingFilter,
+  ) => {
     setSampling(value)
     setSamplingOpen(false)
   }
@@ -70,8 +98,8 @@ export function Conversations({
           <h2>Conversations</h2>
 
           <p>
-            Review conversations assigned to you and complete QA
-            evaluations.
+            Review conversations assigned to you
+            and complete QA evaluations.
           </p>
         </div>
       </div>
@@ -85,7 +113,7 @@ export function Conversations({
             onChange={(event) =>
               setSearch(event.target.value)
             }
-            placeholder="Search Ticket ID..."
+            placeholder="Search conversations..."
           />
         </div>
 
@@ -93,7 +121,9 @@ export function Conversations({
           <button
             className="filter-button"
             onClick={() =>
-              setSamplingOpen((current) => !current)
+              setSamplingOpen(
+                (current) => !current,
+              )
             }
             aria-expanded={samplingOpen}
           >
@@ -109,52 +139,68 @@ export function Conversations({
                     : ''
                 }
                 onClick={() =>
-                  selectSampling('my-assigned')
+                  selectSampling(
+                    'my-assigned',
+                  )
                 }
               >
                 My assigned
               </button>
 
-              <button
-                className={
-                  sampling === 'unassigned'
-                    ? 'selected'
-                    : ''
-                }
-                onClick={() =>
-                  selectSampling('unassigned')
-                }
-              >
-                Unassigned
-              </button>
+              {isAdmin && (
+                <>
+                  <button
+                    className={
+                      sampling === 'unassigned'
+                        ? 'selected'
+                        : ''
+                    }
+                    onClick={() =>
+                      selectSampling(
+                        'unassigned',
+                      )
+                    }
+                  >
+                    Unassigned
+                  </button>
 
-              <button
-                className={
-                  sampling === 'all' ? 'selected' : ''
-                }
-                onClick={() => selectSampling('all')}
-              >
-                All conversations
-              </button>
+                  <button
+                    className={
+                      sampling === 'all'
+                        ? 'selected'
+                        : ''
+                    }
+                    onClick={() =>
+                      selectSampling('all')
+                    }
+                  >
+                    All conversations
+                  </button>
+                </>
+              )}
             </div>
           )}
         </div>
 
-        <button className="filter-button">
-          All agents ▾
-        </button>
+        {isAdmin && (
+          <>
+            <button className="filter-button">
+              All agents ▾
+            </button>
 
-        <button className="filter-button">
-          All channels ▾
-        </button>
+            <button className="filter-button">
+              All channels ▾
+            </button>
 
-        <button className="filter-button">
-          All statuses ▾
-        </button>
+            <button className="filter-button">
+              All statuses ▾
+            </button>
 
-        <button className="filter-button">
-          Date ▾
-        </button>
+            <button className="filter-button">
+              Date ▾
+            </button>
+          </>
+        )}
       </div>
 
       <div className="table-card">
@@ -171,56 +217,70 @@ export function Conversations({
           </thead>
 
           <tbody>
-            {filteredConversations.map((conversation) => (
-              <tr
-                key={conversation.id}
-                onClick={() => onOpen(conversation.id)}
-              >
-                <td>
-                  <div className="conversation-table-main">
-                    <strong>
-                      {conversation.channel === 'Chat'
-                        ? `Conversation with ${conversation.displayName}`
-                        : conversation.subject}
+            {filteredConversations.map(
+              (conversation) => (
+                <tr
+                  key={conversation.id}
+                  onClick={() =>
+                    onOpen(conversation.id)
+                  }
+                >
+                  <td>
+                    <div className="conversation-table-main">
+                      <strong>
+                        {conversation.channel ===
+                        'Chat'
+                          ? `Conversation with ${conversation.displayName}`
+                          : conversation.subject}
+                      </strong>
+
+                      <span>
+                        {conversation.id}
+                      </span>
+                    </div>
+                  </td>
+
+                  <td>
+                    {conversation.agent}
+                  </td>
+
+                  <td>
+                    <span className="channel-badge">
+                      {conversation.channel}
+                    </span>
+                  </td>
+
+                  <td>
+                    {conversation.date}
+                  </td>
+
+                  <td>
+                    <span
+                      className={`status-badge ${
+                        conversation.status ===
+                        'Evaluated'
+                          ? 'evaluated'
+                          : 'pending'
+                      }`}
+                    >
+                      {conversation.status}
+                    </span>
+                  </td>
+
+                  <td>
+                    <strong className="table-score">
+                      {conversation.score !==
+                      null
+                        ? `${conversation.score}%`
+                        : '—'}
                     </strong>
+                  </td>
+                </tr>
+              ),
+            )}
 
-                    <span>{conversation.id}</span>
-                  </div>
-                </td>
-
-                <td>{conversation.agent}</td>
-
-                <td>
-                  <span className="channel-badge">
-                    {conversation.channel}
-                  </span>
-                </td>
-
-                <td>{conversation.date}</td>
-
-                <td>
-                  <span
-                    className={`status-badge ${
-                      conversation.status === 'Evaluated'
-                        ? 'evaluated'
-                        : 'pending'
-                    }`}
-                  >
-                    {conversation.status}
-                  </span>
-                </td>
-
-                <td>
-                  <strong className="table-score">
-                    {conversation.score !== null
-                      ? `${conversation.score}%`
-                      : '—'}
-                  </strong>
-                </td>
-              </tr>
-            ))}
-
-            {filteredConversations.length === 0 && (
+            {filteredConversations.length ===
+              0 && (
               <tr>
                 <td colSpan={6}>
                   <div className="empty-table">
