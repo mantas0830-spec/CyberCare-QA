@@ -22,6 +22,11 @@ const navigation = [
     icon: '◫',
   },
   {
+    id: 'autoqa',
+    label: 'AutoQA',
+    icon: '✦',
+  },
+  {
     id: 'reports',
     label: 'Reports',
     icon: '◒',

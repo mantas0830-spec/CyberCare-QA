@@ -14,6 +14,7 @@ import './styles/layout.css'
 type Page =
   | 'dashboard'
   | 'conversations'
+  | 'autoqa'
   | 'review'
   | 'reports'
   | 'settings'
@@ -109,6 +110,7 @@ function App() {
     if (
       nextPage === 'dashboard' ||
       nextPage === 'conversations' ||
+      nextPage === 'autoqa' ||
       nextPage === 'reports' ||
       nextPage === 'settings'
     ) {
@@ -124,6 +126,9 @@ function App() {
 
       case 'conversations':
         return 'Conversations'
+
+      case 'autoqa':
+        return 'AutoQA'
 
       case 'reports':
         return 'Reports'
@@ -191,6 +196,21 @@ function App() {
             onOpen={openReview}
             isAdmin={isAdmin}
           />
+        )}
+
+        {page === 'autoqa' && (
+          <div className="empty-page">
+            <div className="section-eyebrow">
+              AUTOMATED QUALITY ASSURANCE
+            </div>
+
+            <h2>AutoQA</h2>
+
+            <p>
+              Automatically evaluate conversations
+              using QA rules and AI-powered analysis.
+            </p>
+          </div>
         )}
 
         {page === 'review' &&
