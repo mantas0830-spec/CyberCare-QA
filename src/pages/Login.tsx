@@ -98,13 +98,14 @@ export function Login({ onLogin }: LoginProps) {
 
               <h1>
                 Turn every feedback
-                <br />
+                <br />S
                 into better support.
               </h1>
 
               <p>
                 Review conversations, measure quality,
-                and give your feedback to support and Team Leads to help them improve.
+                and give your support teams feedback that
+                actually helps them improve.
               </p>
             </div>
 
@@ -130,8 +131,7 @@ export function Login({ onLogin }: LoginProps) {
                 <div>
                   <strong>Conversation insights</strong>
                   <span>
-                    See what CSMs are doing well and where
-                    they can improve.
+                    See what CSMs are doing well and where they can improve.
                   </span>
                 </div>
               </div>
