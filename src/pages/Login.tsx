@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import type { AuthUser } from '../types/auth'
+import './Login.css'
 
 type LoginProps = {
   onLogin: (user: AuthUser) => void

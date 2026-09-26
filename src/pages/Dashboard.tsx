@@ -1,4 +1,5 @@
 import { conversations } from '../data/demoData'
+import './Dashboard.css'
 
 export function Dashboard() {
   const evaluated = conversations.filter(

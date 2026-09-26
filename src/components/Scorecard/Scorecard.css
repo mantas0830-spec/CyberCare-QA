@@ -1,21 +1,35 @@
+/* =========================================================
+   SCORECARD
+   ========================================================= */
+
 .scorecard {
   width: 100%;
   height: 100%;
   min-width: 0;
   max-width: 100%;
-  box-sizing: border-box;
+
   display: flex;
   flex-direction: column;
+
   overflow: hidden;
+
   background: #ffffff;
   color: #202420;
+
   border-left: 1px solid #e6e9e5;
 }
 
+
+/* =========================================================
+   SCROLL AREA
+   ========================================================= */
+
 .scorecard-scroll {
   flex: 1;
+
   min-width: 0;
   min-height: 0;
+
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -33,6 +47,7 @@
   border-radius: 999px;
 }
 
+
 /* =========================================================
    HEADER
    ========================================================= */
@@ -40,8 +55,11 @@
 .scorecard-header {
   width: 100%;
   box-sizing: border-box;
+
   padding: 20px 24px 27px;
+
   border-bottom: 1px solid #e7eae6;
+
   background: #ffffff;
 }
 
@@ -49,56 +67,78 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   min-width: 0;
+
   gap: 16px;
 }
 
 .scorecard-eyebrow {
   color: #8f978e;
+
   font-size: 8px;
   line-height: 1;
+
   font-weight: 750;
+
   letter-spacing: 0.13em;
 }
 
-/* Status */
+
+/* =========================================================
+   STATUS
+   ========================================================= */
 
 .scorecard-status {
   display: inline-flex;
   align-items: center;
+
   gap: 6px;
+
   flex-shrink: 0;
+
   height: 24px;
+
   box-sizing: border-box;
+
   padding: 0 9px;
+
   border: 1px solid #e3e7e2;
   border-radius: 999px;
+
   background: #fafbfa;
   color: #747c73;
+
   font-size: 8px;
   line-height: 1;
+
   font-weight: 650;
+
   white-space: nowrap;
 }
 
 .scorecard-status-dot {
   width: 6px;
   height: 6px;
+
   flex-shrink: 0;
+
   border-radius: 50%;
+
   background: #a8aea7;
 }
 
 .scorecard-status-evaluated {
   border-color: #d6e3d7;
+
   background: #f5f9f5;
   color: #55745a;
 }
 
-.scorecard-status-evaluated
-  .scorecard-status-dot {
+.scorecard-status-evaluated .scorecard-status-dot {
   background: #638769;
 }
+
 
 /* =========================================================
    OVERALL SCORE
@@ -106,45 +146,63 @@
 
 .scorecard-overall {
   margin-top: 38px;
+
   padding-top: 23px;
+
   border-top: 1px solid #f0f2ef;
 }
 
 .scorecard-overall-label {
   margin-bottom: 9px;
+
   color: #7f887f;
+
   font-size: 9px;
   line-height: 1.2;
+
   font-weight: 650;
 }
 
 .scorecard-overall-number {
   display: flex;
   align-items: baseline;
+
   color: #202620;
+
   font-size: 52px;
   line-height: 0.95;
+
   font-weight: 720;
+
   letter-spacing: -0.07em;
+
   white-space: nowrap;
 }
 
 .scorecard-overall-number span {
   margin-left: 7px;
+
   color: #a0a69f;
+
   font-size: 14px;
   line-height: 1;
+
   font-weight: 500;
+
   letter-spacing: -0.02em;
 }
 
 .scorecard-overall-description {
   margin-top: 10px;
+
   color: #5f6960;
+
   font-size: 10px;
   line-height: 1.2;
+
   font-weight: 600;
 }
+
 
 /* =========================================================
    CONTENT
@@ -153,13 +211,17 @@
 .scorecard-content {
   width: 100%;
   min-width: 0;
+
   box-sizing: border-box;
+
   padding: 0 24px 28px;
+
   overflow-x: hidden;
 }
 
 .scorecard-section {
   min-width: 0;
+
   margin-top: 28px;
 }
 
@@ -171,40 +233,55 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   min-width: 0;
+
   margin-bottom: 9px;
 }
 
 .scorecard-section-header h3 {
   margin: 0;
+
   color: #3e463f;
+
   font-size: 9px;
   line-height: 1.3;
+
   font-weight: 750;
+
   letter-spacing: 0.075em;
+
   text-transform: uppercase;
 }
 
 .scorecard-section-header span {
   display: block;
+
   margin-top: 4px;
+
   color: #9aa19a;
+
   font-size: 7px;
   line-height: 1.2;
+
   font-weight: 500;
 }
 
 .scorecard-category-list {
   width: 100%;
   min-width: 0;
+
   border-top: 1px solid #e9ece8;
 }
 
 .scorecard-category {
   width: 100%;
   min-width: 0;
+
   box-sizing: border-box;
+
   padding: 13px 2px 11px;
+
   border-bottom: 1px solid #e9ece8;
 }
 
@@ -212,14 +289,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   min-width: 0;
+
   gap: 12px;
 }
 
 .scorecard-category-info {
   display: flex;
   align-items: center;
+
   min-width: 0;
+
   gap: 9px;
 }
 
@@ -230,9 +311,13 @@
 .scorecard-category-name {
   display: flex;
   align-items: center;
+
   min-width: 0;
+
   gap: 6px;
+
   color: #343a34;
+
   font-size: 10px;
   font-weight: 600;
   line-height: 1.3;
@@ -240,7 +325,9 @@
 
 .scorecard-category-meta {
   margin-top: 3px;
+
   color: #a0a59f;
+
   font-size: 7px;
   font-weight: 500;
 }
@@ -248,8 +335,11 @@
 .scorecard-comment-dot {
   width: 4px;
   height: 4px;
+
   flex-shrink: 0;
+
   border-radius: 50%;
+
   background: #6d8d71;
 }
 
@@ -257,12 +347,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   width: 19px;
   height: 19px;
+
   flex-shrink: 0;
+
   border-radius: 5px;
+
   background: #f2e5e3;
   color: #b35a52;
+
   font-size: 9px;
   font-weight: 750;
 }
@@ -277,6 +372,7 @@
   color: #ffffff;
 }
 
+
 /* =========================================================
    RATINGS
    ========================================================= */
@@ -284,26 +380,38 @@
 .scorecard-rating {
   display: flex;
   align-items: center;
+
   gap: 3px;
+
   flex-shrink: 0;
+
   padding: 3px;
+
   border: 1px solid #e5e9e4;
   border-radius: 7px;
+
   background: #f8f9f7;
 }
 
 .scorecard-rating-option {
   width: 27px;
   height: 25px;
+
   padding: 0;
+
   border: 0;
   border-radius: 5px;
+
   background: transparent;
   color: #8a9189;
+
   cursor: pointer;
+
   font: inherit;
+
   font-size: 9px;
   font-weight: 650;
+
   transition:
     background 120ms ease,
     color 120ms ease,
@@ -317,11 +425,14 @@
 
 .scorecard-rating-option-active {
   background: #ffffff;
+
   color: #527357;
+
   box-shadow:
     0 1px 2px rgba(35, 45, 36, 0.08),
     0 0 0 1px #d8e3d9;
 }
+
 
 /* =========================================================
    CRITICAL CONTROLS
@@ -330,25 +441,37 @@
 .scorecard-critical-control {
   display: inline-flex;
   align-items: center;
+
   gap: 7px;
+
   flex-shrink: 0;
+
   min-width: 125px;
   height: 29px;
+
   padding: 0 9px;
+
   border: 1px solid #e1e5e0;
   border-radius: 6px;
+
   background: #fafbf9;
   color: #697069;
+
   cursor: pointer;
+
   font: inherit;
+
   font-size: 8px;
   font-weight: 600;
+
   text-align: left;
+
   white-space: nowrap;
 }
 
 .scorecard-critical-control:hover {
   border-color: #d0d6cf;
+
   background: #f6f8f5;
 }
 
@@ -356,18 +479,24 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   width: 17px;
   height: 17px;
+
   flex-shrink: 0;
+
   border-radius: 4px;
+
   background: #e6eee6;
   color: #5f8064;
+
   font-size: 8px;
   font-weight: 750;
 }
 
 .scorecard-critical-control-active {
   border-color: #e6c1bd;
+
   background: #fff5f3;
   color: #ad514a;
 }
@@ -378,6 +507,7 @@
   color: #ffffff;
 }
 
+
 /* =========================================================
    CATEGORY FOOTER
    ========================================================= */
@@ -386,20 +516,29 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   min-width: 0;
+
   margin-top: 7px;
 }
 
 .scorecard-comment-toggle {
   display: inline-flex;
   align-items: center;
+
   gap: 4px;
+
   padding: 0;
+
   border: 0;
+
   background: transparent;
   color: #a0a59f;
+
   cursor: pointer;
+
   font: inherit;
+
   font-size: 8px;
   font-weight: 550;
 }
@@ -419,9 +558,11 @@
 
 .scorecard-rating-label {
   color: #8b928a;
+
   font-size: 8px;
   font-weight: 550;
 }
+
 
 /* =========================================================
    COMMENTS
@@ -430,21 +571,30 @@
 .scorecard-comment {
   width: 100%;
   min-width: 0;
+
   margin-top: 8px;
 }
 
 .scorecard-comment textarea {
   width: 100%;
   min-height: 58px;
+
   box-sizing: border-box;
+
   resize: vertical;
+
   padding: 8px 9px;
+
   border: 1px solid #dfe4de;
   border-radius: 6px;
+
   outline: none;
+
   background: #fafbf9;
   color: #333933;
+
   font: inherit;
+
   font-size: 9px;
   line-height: 1.45;
 }
@@ -455,10 +605,13 @@
 
 .scorecard-comment textarea:focus {
   border-color: #9caf9d;
+
   background: #ffffff;
+
   box-shadow:
     0 0 0 2px rgba(107, 139, 111, 0.08);
 }
+
 
 /* =========================================================
    REVIEWER FEEDBACK
@@ -466,24 +619,36 @@
 
 .scorecard-feedback-section {
   min-width: 0;
+
   margin-top: 32px;
+
   padding-top: 22px;
+
   border-top: 1px solid #e5e9e4;
 }
 
 .scorecard-feedback-input {
   width: 100%;
   min-height: 72px;
+
   box-sizing: border-box;
+
   resize: vertical;
+
   margin-top: 10px;
+
   padding: 10px 11px;
+
   border: 1px solid #dfe4de;
   border-radius: 7px;
+
   outline: none;
+
   background: #fafbf9;
   color: #333933;
+
   font: inherit;
+
   font-size: 9px;
   line-height: 1.5;
 }
@@ -494,10 +659,13 @@
 
 .scorecard-feedback-input:focus {
   border-color: #9caf9d;
+
   background: #ffffff;
+
   box-shadow:
     0 0 0 2px rgba(107, 139, 111, 0.08);
 }
+
 
 /* =========================================================
    FOOTER
@@ -505,53 +673,73 @@
 
 .scorecard-footer {
   flex-shrink: 0;
+
   width: 100%;
+
   box-sizing: border-box;
+
   padding: 11px 24px 13px;
+
   border-top: 1px solid #e5e9e4;
+
   background: #ffffff;
 }
 
 .scorecard-footer-actions {
   display: flex;
   align-items: center;
+
   min-width: 0;
+
   gap: 7px;
 }
 
 .scorecard-flag-button,
 .scorecard-save-button {
   height: 34px;
+
   border-radius: 6px;
+
   cursor: pointer;
+
   font: inherit;
+
   font-size: 9px;
   font-weight: 650;
 }
 
 .scorecard-flag-button {
   flex-shrink: 0;
+
   padding: 0 12px;
+
   border: 1px solid #e0e4df;
+
   background: #ffffff;
   color: #687068;
 }
 
 .scorecard-flag-button:hover:not(:disabled) {
   border-color: #cdd3cc;
+
   background: #f8faf7;
 }
 
 .scorecard-flag-button-active {
   border-color: #d4e2d5;
+
   background: #f3f8f3;
   color: #55765a;
 }
 
 .scorecard-save-button {
   min-width: 0;
+
   flex: 1;
+
   border: 1px solid #5f8063;
+  border-radius: 6px;
+
   background: #5f8063;
   color: #ffffff;
 }
@@ -563,12 +751,17 @@
 .scorecard-flag-message {
   display: flex;
   align-items: center;
+
   gap: 5px;
+
   margin-bottom: 7px;
+
   color: #58725b;
+
   font-size: 8px;
   font-weight: 550;
 }
+
 
 /* =========================================================
    RESPONSIVE

@@ -1,0 +1,441 @@
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+  position: relative;
+  width: 240px;
+  min-height: 100vh;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 14px 14px;
+  background: var(--sidebar);
+  color: var(--sidebar-text);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: visible;
+  transition:
+    width 0.2s ease,
+    padding 0.2s ease;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.sidebar-brand {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 0 10px 30px;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: var(--primary);
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 800;
+  box-shadow:
+    0 4px 12px rgba(70, 135, 255, 0.2);
+}
+
+.brand-mark-c {
+  line-height: 1;
+}
+
+.brand-content {
+  position: relative;
+  min-width: 0;
+  flex: 1;
+}
+
+.brand-platform-name {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.brand-platform-qa {
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.workspace-selector {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 4px;
+  padding: 0;
+  background: transparent;
+  color: var(--sidebar-muted);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.workspace-selector:hover {
+  color: #ffffff;
+}
+
+.workspace-chevron {
+  color: var(--sidebar-muted);
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   WORKSPACE DROPDOWN
+   ========================================================= */
+
+.workspace-dropdown {
+  position: absolute;
+  z-index: 100;
+  top: calc(100% + 10px);
+  left: -10px;
+  width: 240px;
+  padding: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  background: #172d40;
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.25),
+    0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.workspace-dropdown-label {
+  padding: 8px 10px 7px;
+  color: #7890a4;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.workspace-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 10px;
+  border-radius: 6px;
+  background: transparent;
+  color: #dce6ef;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+
+.workspace-option:hover {
+  background: #203b52;
+}
+
+.workspace-option.selected {
+  background: rgba(70, 135, 255, 0.16);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.workspace-check {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.sidebar-navigation {
+  flex: 1;
+}
+
+.navigation-label {
+  padding: 0 12px 9px;
+  color: var(--sidebar-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.navigation-item {
+  width: 100%;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 12px;
+  margin-bottom: 3px;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--sidebar-text);
+  text-align: left;
+  font-size: 13px;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.navigation-item:hover {
+  background: var(--sidebar-hover);
+  color: #ffffff;
+}
+
+.navigation-item.active {
+  background: var(--sidebar-active);
+  color: #ffffff;
+}
+
+.navigation-icon {
+  width: 18px;
+  flex-shrink: 0;
+  color: var(--sidebar-muted);
+  text-align: center;
+  font-size: 15px;
+}
+
+.navigation-item.active .navigation-icon {
+  color: var(--accent);
+}
+
+
+/* =========================================================
+   USER AREA
+   ========================================================= */
+
+.sidebar-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 12px;
+}
+
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 7px 2px;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(70, 135, 255, 0.16);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.user-details {
+  min-width: 0;
+  flex: 1;
+}
+
+.user-name {
+  overflow: hidden;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-role {
+  margin-top: 2px;
+  color: var(--sidebar-muted);
+  font-size: 10px;
+}
+
+.user-menu-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.user-menu {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--sidebar-muted);
+  font-size: 15px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.user-menu:hover,
+.user-menu.active {
+  background: var(--sidebar-hover);
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   USER DROPDOWN
+   ========================================================= */
+
+.user-dropdown {
+  position: absolute;
+  z-index: 100;
+  right: 0;
+  bottom: calc(100% + 8px);
+  width: 170px;
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  background: #172d40;
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.25),
+    0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.user-dropdown button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 6px;
+  background: transparent;
+  color: #dce6ef;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+
+.user-dropdown button:hover {
+  background: #203b52;
+}
+
+.user-dropdown-icon {
+  width: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8fa4b7;
+  font-size: 14px;
+}
+
+.user-dropdown-divider {
+  height: 1px;
+  margin: 4px 6px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.user-dropdown button.logout-option {
+  color: #ff8b80;
+}
+
+.user-dropdown button.logout-option .user-dropdown-icon {
+  color: #ff8b80;
+}
+
+.user-dropdown button.logout-option:hover {
+  background: rgba(247, 104, 91, 0.12);
+}
+
+
+/* =========================================================
+   SIDEBAR COLLAPSE
+   ========================================================= */
+
+.sidebar-collapsed {
+  width: 0;
+  padding-left: 0;
+  padding-right: 0;
+  border-right-color: transparent;
+}
+
+.sidebar-collapsed > * {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidebar-toggle {
+  position: fixed;
+  z-index: 200;
+  top: 18px;
+  left: 224px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 7px;
+  background: var(--sidebar);
+  color: var(--sidebar-text);
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow:
+    0 3px 10px rgba(15, 34, 51, 0.2);
+  transition:
+    left 0.2s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.sidebar-toggle:hover {
+  background: var(--sidebar-hover);
+  color: #ffffff;
+}
+
+.sidebar-toggle.collapsed {
+  left: 10px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 70px;
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+
+  .sidebar-brand {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .brand-content,
+  .navigation-label,
+  .navigation-item span:last-child,
+  .sidebar-user {
+    display: none;
+  }
+
+  .navigation-item {
+    justify-content: center;
+    padding: 0;
+  }
+}

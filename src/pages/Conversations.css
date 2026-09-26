@@ -1,0 +1,507 @@
+/* =========================================================
+   CONVERSATIONS PAGE
+   ========================================================= */
+
+.conversations-page {
+  padding: 30px 34px 50px;
+}
+
+
+/* =========================================================
+   FILTERS
+   ========================================================= */
+
+.filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-bottom: 16px;
+}
+
+.search-box {
+  width: 270px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 0 11px;
+
+  border: 1px solid var(--border);
+  border-radius: 7px;
+
+  background: var(--surface);
+}
+
+.search-box:focus-within {
+  border-color: #aebbc7;
+
+  box-shadow:
+    0 0 0 2px rgba(70, 135, 255, 0.05);
+}
+
+.search-box > span {
+  color: var(--text-muted);
+
+  font-size: 18px;
+  line-height: 1;
+}
+
+.search-box input {
+  width: 100%;
+  min-width: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+  color: var(--text);
+
+  font-size: 12px;
+}
+
+.search-box input::placeholder {
+  color: var(--text-muted);
+}
+
+.filter-dropdown {
+  position: relative;
+}
+
+.filter-button {
+  height: 36px;
+
+  padding: 0 12px;
+
+  border: 1px solid var(--border);
+  border-radius: 7px;
+
+  background: var(--surface);
+  color: var(--text-secondary);
+
+  font-size: 12px;
+
+  white-space: nowrap;
+}
+
+.filter-button:hover,
+.filter-button[aria-expanded="true"] {
+  border-color: #cbd5df;
+
+  background: var(--surface-soft);
+  color: var(--text);
+}
+
+
+/* =========================================================
+   FILTER DROPDOWN MENUS
+   ========================================================= */
+
+.filter-dropdown-menu {
+  position: absolute;
+  z-index: 50;
+
+  top: calc(100% + 6px);
+  left: 0;
+
+  min-width: 175px;
+
+  padding: 6px;
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  background: var(--surface);
+
+  box-shadow:
+    0 12px 30px rgba(15, 34, 51, 0.12),
+    0 2px 7px rgba(15, 34, 51, 0.06);
+}
+
+.filter-dropdown-menu button {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  padding: 8px 10px;
+
+  border-radius: 6px;
+
+  background: transparent;
+  color: var(--text-secondary);
+
+  font-size: 12px;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.filter-dropdown-menu button:hover {
+  background: var(--surface-soft);
+  color: var(--text);
+}
+
+.filter-dropdown-menu button.selected {
+  background: rgba(70, 135, 255, 0.08);
+
+  color: var(--primary);
+
+  font-weight: 600;
+}
+
+.filter-empty {
+  padding: 10px;
+
+  color: var(--text-muted);
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   AGENT FILTER
+   ========================================================= */
+
+.agent-menu {
+  width: 220px;
+  max-height: 320px;
+
+  overflow-y: auto;
+}
+
+.agent-search {
+  padding: 3px 3px 6px;
+}
+
+.agent-search input {
+  width: 100%;
+  height: 32px;
+
+  padding: 0 9px;
+
+  border: 1px solid var(--border);
+  border-radius: 6px;
+
+  outline: none;
+
+  background: var(--background);
+  color: var(--text);
+
+  font-size: 12px;
+}
+
+.agent-search input:focus {
+  border-color: var(--primary);
+}
+
+
+/* =========================================================
+   RESULTS META
+   ========================================================= */
+
+.conversation-results-meta {
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  margin: 4px 0 10px;
+
+  color: var(--text-muted);
+
+  font-size: 11px;
+}
+
+.conversation-results-meta span + span {
+  position: relative;
+
+  padding-left: 16px;
+}
+
+.conversation-results-meta span + span::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 50%;
+
+  width: 3px;
+  height: 3px;
+
+  border-radius: 50%;
+
+  background: var(--text-muted);
+
+  transform: translateY(-50%);
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.conversations-table-card {
+  width: 100%;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  background: var(--surface);
+}
+
+.conversations-table-card table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: auto;
+}
+
+.conversations-table-card thead {
+  background: var(--surface-soft);
+}
+
+.conversations-table-card th {
+  height: 42px;
+
+  padding: 0 14px;
+
+  border-bottom: 1px solid var(--border);
+
+  color: var(--text-muted);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.04em;
+
+  text-align: left;
+
+  white-space: nowrap;
+}
+
+.conversations-table-card td {
+  padding: 13px 14px;
+
+  border-bottom: 1px solid var(--border);
+
+  color: var(--text-secondary);
+
+  font-size: 12px;
+
+  vertical-align: middle;
+}
+
+.conversations-table-card tbody tr {
+  background: var(--surface);
+
+  transition:
+    background 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.conversations-table-card tbody tr:hover {
+  background: #f8fafb;
+}
+
+.conversations-table-card tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+
+/* =========================================================
+   CONVERSATION CELL
+   ========================================================= */
+
+.conversation-table-main {
+  min-width: 230px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.conversation-table-main strong {
+  color: var(--text);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  line-height: 1.35;
+}
+
+.conversation-table-main span {
+  color: var(--text-muted);
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.channel-badge,
+.status-badge,
+.resolution-badge {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 23px;
+
+  padding: 0 8px;
+
+  border-radius: 999px;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.channel-badge {
+  background: #eef3f7;
+  color: #627487;
+}
+
+.status-badge.evaluated {
+  background: rgba(54, 151, 99, 0.1);
+
+  color: #318357;
+}
+
+.status-badge.pending {
+  background: rgba(222, 163, 54, 0.12);
+
+  color: #a87520;
+}
+
+.status-badge.not-evaluated {
+  background: rgba(222, 163, 54, 0.12);
+
+  color: #a87520;
+}
+
+.resolution-badge.resolved {
+  background: rgba(54, 151, 99, 0.1);
+
+  color: #318357;
+}
+
+.resolution-badge.not-resolved {
+  background: rgba(220, 82, 73, 0.1);
+
+  color: #bd5149;
+}
+
+
+/* =========================================================
+   CSAT
+   ========================================================= */
+
+.csat-value {
+  display: inline-flex;
+
+  letter-spacing: 1px;
+
+  color: #e5a93d;
+
+  font-size: 11px;
+}
+
+.csat-empty {
+  color: #d9dfe4;
+}
+
+.csat-number {
+  display: inline-block;
+
+  margin-left: 6px;
+
+  color: var(--text-secondary);
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.csat-not-rated {
+  margin-left: 0;
+
+  color: var(--text-muted);
+
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   QA SCORE
+   ========================================================= */
+
+.table-score {
+  color: var(--text);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   EMPTY TABLE
+   ========================================================= */
+
+.empty-table {
+  padding: 55px 20px;
+
+  color: var(--text-muted);
+
+  font-size: 13px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .conversations-table-card {
+    overflow-x: auto;
+  }
+
+  .conversations-table-card table {
+    min-width: 900px;
+  }
+}
+
+@media (max-width: 760px) {
+  .conversations-page {
+    padding: 20px 15px 40px;
+  }
+
+  .filters {
+    align-items: stretch;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .filter-dropdown,
+  .filter-button {
+    max-width: 100%;
+  }
+}

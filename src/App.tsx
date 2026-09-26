@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Sidebar } from './components/Sidebar/Sidebar'
-import { Topbar } from './components/Topbar/Topbar'
 import { Conversations } from './pages/Conversations'
 import { ConversationReview } from './pages/ConversationReview'
 import { Dashboard } from './pages/Dashboard'
@@ -22,11 +21,11 @@ type Page =
 const AUTH_STORAGE_KEY = 'cybercare-qa-demo-user'
 
 function App() {
-  const [user, setUser] = useState<AuthUser | null>(
-    null,
-  )
+  const [user, setUser] =
+    useState<AuthUser | null>(null)
 
-  const [authLoading, setAuthLoading] = useState(true)
+  const [authLoading, setAuthLoading] =
+    useState(true)
 
   const [page, setPage] =
     useState<Page>('dashboard')
@@ -98,6 +97,14 @@ function App() {
     setSelectedConversationId(
       conversationId,
     )
+
+    /*
+     * Automatically hide the original
+     * application sidebar when entering
+     * conversation review.
+     */
+    setSidebarCollapsed(true)
+
     setPage('review')
   }
 
@@ -119,28 +126,6 @@ function App() {
     }
   }
 
-  const getTitle = () => {
-    switch (page) {
-      case 'dashboard':
-        return 'Dashboard'
-
-      case 'conversations':
-        return 'Conversations'
-
-      case 'autoqa':
-        return 'AutoQA'
-
-      case 'reports':
-        return 'Reports'
-
-      case 'settings':
-        return 'Settings'
-
-      case 'review':
-        return 'Conversation Review'
-    }
-  }
-
   if (authLoading) {
     return null
   }
@@ -152,6 +137,20 @@ function App() {
   }
 
   const isAdmin = user.role === 'admin'
+
+  /*
+   * During review, when the original sidebar
+   * is collapsed, allow the review workspace
+   * to use the full width.
+   */
+  const mainMarginLeft =
+    page === 'review'
+      ? sidebarCollapsed
+        ? '0px'
+        : '248px'
+      : sidebarCollapsed
+        ? '68px'
+        : '248px'
 
   return (
     <div className="app">
@@ -175,18 +174,12 @@ function App() {
             : ''
         }`}
         style={{
-          marginLeft: sidebarCollapsed
-            ? '68px'
-            : '248px',
+          marginLeft: mainMarginLeft,
           minWidth: 0,
           minHeight: '100vh',
           transition: 'margin-left 180ms ease',
         }}
       >
-        {page !== 'review' && (
-          <Topbar title={getTitle()} />
-        )}
-
         {page === 'dashboard' && (
           <Dashboard />
         )}

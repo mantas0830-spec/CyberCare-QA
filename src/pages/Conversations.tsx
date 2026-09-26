@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { conversations } from '../data/demoData'
+import './Conversations.css'
 
 type ConversationsProps = {
   onOpen: (conversationId: string) => void

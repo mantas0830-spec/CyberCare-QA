@@ -1,3 +1,5 @@
+import './Settings.css'
+
 type SettingsProps = {
   isAdmin: boolean
 }

@@ -1,0 +1,250 @@
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.stat-card {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  margin-top: 9px;
+  color: var(--text);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.stat-change {
+  margin-top: 7px;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.stat-change.positive {
+  color: var(--success);
+}
+
+.stat-change.negative {
+  color: var(--danger);
+}
+
+
+/* =========================================================
+   DASHBOARD GRID
+   ========================================================= */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 18px;
+}
+
+.dashboard-card {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 19px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.card-header h3 {
+  margin-top: 4px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   RECENT EVALUATIONS
+   ========================================================= */
+
+.evaluation-list {
+  padding: 0 20px;
+}
+
+.evaluation-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-height: 64px;
+  border-bottom: 1px solid var(--border);
+}
+
+.evaluation-row:last-child {
+  border-bottom: 0;
+}
+
+.evaluation-avatar {
+  width: 31px;
+  height: 31px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--surface-soft);
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.evaluation-main {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.evaluation-main strong {
+  overflow: hidden;
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.evaluation-main span {
+  overflow: hidden;
+  color: var(--text-muted);
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.evaluation-score {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.evaluation-score.high {
+  color: var(--success);
+}
+
+.evaluation-score.medium {
+  color: var(--warning);
+}
+
+.evaluation-score.low {
+  color: var(--danger);
+}
+
+
+/* =========================================================
+   SCORE DISTRIBUTION
+   ========================================================= */
+
+.distribution {
+  padding: 22px 20px;
+}
+
+.distribution-row {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) 38px;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.distribution-row:last-child {
+  margin-bottom: 0;
+}
+
+.distribution-row > span {
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.distribution-row > strong {
+  color: var(--text);
+  font-size: 10px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.distribution-bar {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--surface-soft);
+}
+
+.distribution-bar > div {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--primary);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 17px;
+  }
+
+  .dashboard-grid {
+    gap: 14px;
+  }
+
+  .card-header {
+    padding: 17px;
+  }
+
+  .evaluation-list {
+    padding: 0 17px;
+  }
+
+  .distribution {
+    padding: 19px 17px;
+  }
+}
