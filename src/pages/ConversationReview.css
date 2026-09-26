@@ -4,18 +4,13 @@
 
 .review-page {
   position: relative;
-
   width: 100%;
   height: 100vh;
-
   min-width: 0;
   min-height: 0;
-
   overflow: hidden;
-
   background: #f3f4f0;
 }
-
 
 /* =========================================================
    MAIN REVIEW GRID
@@ -24,33 +19,30 @@
 .review-layout {
   width: 100%;
   height: 100%;
-
   min-width: 0;
   min-height: 0;
-
   display: grid;
 
   /*
-    Context      Conversation                Scorecard
-    68px         EVERYTHING ELSE             340px
+    Context      Conversation              Scorecard
+    68px         EVERYTHING ELSE           340px
   */
+
   grid-template-columns:
     68px
     minmax(0, 1fr)
     340px;
 
   gap: 0;
-
   overflow: hidden;
 }
 
 .review-layout-panel-open {
   grid-template-columns:
-    250px
+    330px
     minmax(0, 1fr)
     340px;
 }
-
 
 /* =========================================================
    LEFT CONTEXT
@@ -59,66 +51,45 @@
 .review-context {
   grid-column: 1;
   grid-row: 1;
-
   width: 100%;
   height: 100%;
-
   min-width: 0;
   min-height: 0;
-
   display: flex;
-
   overflow: hidden;
-
   background: #f8f9f6;
-
   border-right: 1px solid #dfe3dd;
-
   box-sizing: border-box;
 }
 
 .review-context-rail {
   width: 68px;
   min-width: 68px;
-
   height: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
   gap: 6px;
-
-  padding: 14px 8px;
-
+  padding: 54px 8px 14px;
   background: #f8f9f6;
-
   box-sizing: border-box;
 }
 
 .review-context-button {
   width: 52px;
   height: 62px;
-
   flex: 0 0 62px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   gap: 5px;
-
   padding: 0;
-
   border: 0;
   border-radius: 8px;
-
   background: transparent;
   color: #687169;
-
   cursor: pointer;
-
   transition:
     background 0.15s ease,
     color 0.15s ease;
@@ -141,128 +112,67 @@
 
 .review-context-label {
   max-width: 52px;
-
   overflow: hidden;
-
   color: inherit;
-
   font-size: 9px;
   line-height: 11px;
   font-weight: 700;
-
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
 
 /* =========================================================
    EXPANDED CONTEXT PANEL
    ========================================================= */
 
 .review-context-panel {
-  width: 182px;
-  min-width: 182px;
-
+  width: 262px;
+  min-width: 262px;
   height: 100%;
-
   display: flex;
   flex-direction: column;
-
   overflow: hidden;
-
   background: #ffffff;
-
   border-left: 1px solid #e2e6e1;
-
   box-sizing: border-box;
 }
 
 .review-context-panel-header {
   min-height: 76px;
-
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
   gap: 10px;
-
-  padding: 14px 12px 14px 16px;
-
+  padding: 14px 16px;
   border-bottom: 1px solid #e5e8e3;
-
   box-sizing: border-box;
 }
 
 .review-context-panel-eyebrow {
   display: block;
-
   margin-bottom: 4px;
-
   color: #89918a;
-
   font-size: 9px;
   line-height: 11px;
   font-weight: 800;
-
   letter-spacing: 0.08em;
 }
 
 .review-context-panel-header h3 {
   margin: 0;
-
   color: #252923;
-
   font-size: 14px;
   line-height: 18px;
   font-weight: 700;
 }
 
-.review-context-close {
-  width: 28px;
-  height: 28px;
-
-  flex: 0 0 28px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0;
-
-  border: 1px solid #dfe3dd;
-  border-radius: 6px;
-
-  background: #ffffff;
-  color: #657066;
-
-  font-size: 19px;
-  line-height: 1;
-
-  cursor: pointer;
-
-  transition:
-    background 0.15s ease,
-    color 0.15s ease;
-}
-
-.review-context-close:hover {
-  background: #f1f4f0;
-  color: #354037;
-}
-
 .review-context-content {
   flex: 1 1 auto;
-
   min-width: 0;
   min-height: 0;
-
   overflow-y: auto;
-
   padding: 16px;
-
   box-sizing: border-box;
 }
-
 
 /* =========================================================
    CENTER CONVERSATION
@@ -271,24 +181,18 @@
 /*
    IMPORTANT:
    The center column owns ALL remaining horizontal space.
-
    Nothing here should have a max-width.
 */
 
 .review-conversation {
   grid-column: 2;
   grid-row: 1;
-
   width: 100%;
   height: 100%;
-
   min-width: 0;
   min-height: 0;
-
   overflow: hidden;
-
   background: #ffffff;
-
   box-sizing: border-box;
 }
 
@@ -299,17 +203,12 @@
 .review-conversation > * {
   width: 100% !important;
   height: 100% !important;
-
   min-width: 0 !important;
   min-height: 0 !important;
-
   max-width: none !important;
-
   margin: 0 !important;
-
   box-sizing: border-box;
 }
-
 
 /*
    Conversation panel itself
@@ -318,12 +217,9 @@
 .review-conversation .conversation-panel {
   width: 100% !important;
   max-width: none !important;
-
   min-width: 0 !important;
-
   box-sizing: border-box;
 }
-
 
 /*
    Transcript must occupy the complete center width.
@@ -332,21 +228,16 @@
 .review-conversation .conversation-transcript {
   width: 100% !important;
   max-width: none !important;
-
   min-width: 0 !important;
-
   box-sizing: border-box;
 }
 
 .review-conversation .conversation-messages {
   width: 100% !important;
   max-width: none !important;
-
   min-width: 0 !important;
-
   box-sizing: border-box;
 }
-
 
 /* =========================================================
    MESSAGE WIDTH
@@ -362,12 +253,9 @@
 .review-conversation .message-header,
 .review-conversation .message-bubble {
   width: min(1100px, calc(100% - 24px));
-
   max-width: none;
-
   box-sizing: border-box;
 }
-
 
 /* =========================================================
    RIGHT SCORECARD
@@ -376,36 +264,25 @@
 .review-scorecard {
   grid-column: 3;
   grid-row: 1;
-
   width: 100%;
   height: 100%;
-
   min-width: 0;
   min-height: 0;
-
   overflow: hidden;
-
   background: #ffffff;
-
   border-left: 1px solid #dfe3dd;
-
   box-sizing: border-box;
 }
 
 .review-scorecard > * {
   width: 100% !important;
   height: 100% !important;
-
   max-width: none !important;
-
   min-width: 0 !important;
   min-height: 0 !important;
-
   margin: 0 !important;
-
   box-sizing: border-box;
 }
-
 
 /* =========================================================
    EVENTS
@@ -418,36 +295,27 @@
 
 .review-event {
   position: relative;
-
   display: grid;
-
   grid-template-columns:
     36px
     12px
     minmax(0, 1fr);
-
   column-gap: 6px;
-
   min-height: 76px;
 }
 
 .review-event:not(:last-child)::after {
   content: '';
-
   position: absolute;
-
   left: 49px;
   top: 18px;
   bottom: -8px;
-
   width: 1px;
-
   background: #dfe4de;
 }
 
 .review-event-time {
   color: #8a938c;
-
   font-size: 10px;
   font-weight: 600;
 }
@@ -455,16 +323,11 @@
 .review-event-marker {
   position: relative;
   z-index: 2;
-
   width: 8px;
   height: 8px;
-
   margin-top: 3px;
-
   border-radius: 50%;
-
   background: #6f8f72;
-
   box-shadow:
     0 0 0 3px #e8eee8;
 }
@@ -472,25 +335,20 @@
 .review-event-body {
   display: flex;
   flex-direction: column;
-
   gap: 4px;
-
   min-width: 0;
 }
 
 .review-event-body strong {
   color: #303830;
-
   font-size: 11px;
 }
 
 .review-event-body span {
   color: #858e86;
-
   font-size: 10px;
   line-height: 1.5;
 }
-
 
 /* =========================================================
    DETAILS
@@ -504,11 +362,8 @@
 .review-detail {
   display: flex;
   flex-direction: column;
-
   gap: 5px;
-
   padding: 11px 0;
-
   border-bottom: 1px solid #edf0ec;
 }
 
@@ -518,20 +373,16 @@
 
 .review-detail-label {
   color: #8a938b;
-
   font-size: 9px;
   font-weight: 700;
 }
 
 .review-detail-value {
   color: #303730;
-
   font-size: 11px;
   line-height: 1.45;
-
   word-break: break-word;
 }
-
 
 /* =========================================================
    INTERACTION HISTORY
@@ -540,39 +391,32 @@
 .review-interaction-history {
   display: flex;
   flex-direction: column;
-
   gap: 10px;
 }
 
 .review-history-summary {
   display: flex;
   flex-direction: column;
-
   gap: 5px;
-
   padding-bottom: 8px;
 }
 
 .review-history-summary strong {
   color: #303830;
-
   font-size: 11px;
   font-weight: 700;
 }
 
 .review-history-summary span {
   color: #858e86;
-
   font-size: 10px;
   line-height: 1.5;
 }
 
 .review-customer-conversation {
   padding: 10px;
-
   border: 1px solid #e3e7e2;
   border-radius: 8px;
-
   background: #fafbf9;
 }
 
@@ -580,50 +424,38 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 6px;
-
   margin-bottom: 7px;
 }
 
 .review-history-date {
   color: #8a938b;
-
   font-size: 9px;
   font-weight: 600;
 }
 
 .review-history-channel {
   padding: 3px 5px;
-
   border-radius: 5px;
-
   background: #e8eee8;
   color: #5f7c64;
-
   font-size: 8px;
   font-weight: 700;
 }
 
 .review-customer-conversation strong {
   display: block;
-
   margin-bottom: 4px;
-
   color: #303830;
-
   font-size: 10px;
 }
 
 .review-customer-conversation > span {
   display: block;
-
   color: #858e86;
-
   font-size: 9px;
   line-height: 1.45;
 }
-
 
 /* =========================================================
    RESPONSIVE
@@ -639,7 +471,7 @@
 
   .review-layout-panel-open {
     grid-template-columns:
-      240px
+      320px
       minmax(0, 1fr)
       320px;
   }
@@ -647,6 +479,7 @@
   .review-context-rail {
     width: 60px;
     min-width: 60px;
+    padding-top: 54px;
   }
 
   .review-context-button {
@@ -654,8 +487,8 @@
   }
 
   .review-context-panel {
-    width: 180px;
-    min-width: 180px;
+    width: 260px;
+    min-width: 260px;
   }
 }
 

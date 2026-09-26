@@ -208,18 +208,6 @@ export function ConversationReview({
                       'Conversation information'}
                   </h3>
                 </div>
-
-                <button
-                  type="button"
-                  className="review-context-close"
-                  onClick={() =>
-                    setActivePanel(null)
-                  }
-                  aria-label="Close information panel"
-                  title="Close panel"
-                >
-                  ‹
-                </button>
               </div>
 
               <div className="review-context-content">
