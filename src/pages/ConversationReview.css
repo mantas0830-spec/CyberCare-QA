@@ -44,7 +44,7 @@
   min-height: 0;
   display: flex;
   overflow: hidden;
-  background: #f8f9f6;
+  background: #f6f7f3;
   border-right: 1px solid #dfe3dd;
   box-sizing: border-box;
 }
@@ -58,7 +58,7 @@
   align-items: center;
   gap: 8px;
   padding: 54px 7px 14px;
-  background: #f8f9f6;
+  background: #f6f7f3;
   box-sizing: border-box;
 }
 
@@ -94,7 +94,7 @@
 }
 
 .review-context-button:hover {
-  border-color: #dce3dc;
+  border-color: #d8e0d8;
   background: #edf2ed;
   color: #39423a;
 }
@@ -104,7 +104,7 @@
 }
 
 .review-context-button.active {
-  border-color: #cddbcf;
+  border-color: #cbdacb;
   background: #e5ede5;
   color: #4f7655;
   box-shadow:
@@ -119,7 +119,7 @@
   width: 28px;
   height: 28px;
   flex-shrink: 0;
-  border: 1px solid #e0e5df;
+  border: 1px solid #dde3dc;
   border-radius: 8px;
   background: #ffffff;
   color: #737d74;
@@ -136,16 +136,14 @@
   display: block;
 }
 
-.review-context-button:hover
-  .review-context-icon {
-  border-color: #d6ded5;
+.review-context-button:hover .review-context-icon {
+  border-color: #d2ddd2;
   background: #f8faf7;
   color: #526756;
 }
 
-.review-context-button.active
-  .review-context-icon {
-  border-color: #c9dacb;
+.review-context-button.active .review-context-icon {
+  border-color: #c6d7c8;
   background: #f8fbf8;
   color: #4f7655;
 }
@@ -173,7 +171,7 @@
   flex-direction: column;
   overflow: hidden;
   background: #ffffff;
-  border-left: 1px solid #e2e6e1;
+  border-left: 1px solid #e1e5df;
   box-sizing: border-box;
 }
 
@@ -213,6 +211,7 @@
   min-height: 0;
   overflow-y: auto;
   padding: 20px 18px 24px;
+  background: #ffffff;
   box-sizing: border-box;
 }
 
@@ -226,7 +225,7 @@
 
 .review-context-content::-webkit-scrollbar-thumb {
   border-radius: 999px;
-  background: #d8ded8;
+  background: #d4dcd4;
 }
 
 /* =========================================================
@@ -338,7 +337,7 @@
   top: 18px;
   bottom: -8px;
   width: 1px;
-  background: #dfe4de;
+  background: #dce3dc;
 }
 
 .review-event-time {
@@ -450,17 +449,17 @@
 
 .review-customer-conversation {
   padding: 12px;
-  border: 1px solid #e3e7e2;
+  border: 1px solid #e0e6df;
   border-radius: 9px;
-  background: #fafbf9;
+  background: #f8faf7;
   transition:
     border-color 150ms ease,
     background 150ms ease;
 }
 
 .review-customer-conversation:hover {
-  border-color: #d7ded7;
-  background: #f8faf8;
+  border-color: #d3ddd3;
+  background: #f4f8f4;
 }
 
 .review-customer-conversation-top {
@@ -480,7 +479,7 @@
 .review-history-channel {
   padding: 3px 6px;
   border-radius: 5px;
-  background: #e8eee8;
+  background: #e7eee7;
   color: #5f7c64;
   font-size: 8px;
   font-weight: 700;
