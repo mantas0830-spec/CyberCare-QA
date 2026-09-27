@@ -181,7 +181,13 @@ function App() {
         }}
       >
         {page === 'dashboard' && (
-          <Dashboard />
+          <Dashboard
+  onOpenConversation={(conversationId) => {
+  setSelectedConversationId(conversationId)
+  setSidebarCollapsed(true)
+  setPage('review')
+}}
+/>
         )}
 
         {page === 'conversations' && (

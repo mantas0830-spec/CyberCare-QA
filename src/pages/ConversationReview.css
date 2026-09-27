@@ -22,26 +22,13 @@
   min-width: 0;
   min-height: 0;
   display: grid;
-
-  /*
-    Context      Conversation              Scorecard
-    68px         EVERYTHING ELSE           340px
-  */
-
-  grid-template-columns:
-    68px
-    minmax(0, 1fr)
-    340px;
-
+  grid-template-columns: 68px minmax(0, 1fr) 340px;
   gap: 0;
   overflow: hidden;
 }
 
 .review-layout-panel-open {
-  grid-template-columns:
-    330px
-    minmax(0, 1fr)
-    340px;
+  grid-template-columns: 330px minmax(0, 1fr) 340px;
 }
 
 /* =========================================================
@@ -69,53 +56,106 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: 54px 8px 14px;
+  gap: 8px;
+  padding: 54px 7px 14px;
   background: #f8f9f6;
   box-sizing: border-box;
 }
 
+/* =========================================================
+   CONTEXT BUTTONS
+   ========================================================= */
+
 .review-context-button {
-  width: 52px;
-  height: 62px;
-  flex: 0 0 62px;
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
+  min-height: 54px;
+  flex: 0 0 54px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5px;
   padding: 0;
-  border: 0;
-  border-radius: 8px;
+  border: 1px solid transparent;
+  border-radius: 9px;
   background: transparent;
-  color: #687169;
+  color: #737b74;
   cursor: pointer;
+  font: inherit;
+  box-sizing: border-box;
   transition:
-    background 0.15s ease,
-    color 0.15s ease;
+    background 140ms ease,
+    border-color 140ms ease,
+    color 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease;
 }
 
 .review-context-button:hover {
-  background: #e9eee9;
-  color: #354037;
+  border-color: #dce3dc;
+  background: #edf2ed;
+  color: #39423a;
+}
+
+.review-context-button:active {
+  transform: translateY(1px);
 }
 
 .review-context-button.active {
-  background: #dfe9df;
+  border-color: #cddbcf;
+  background: #e5ede5;
   color: #4f7655;
+  box-shadow:
+    0 1px 2px rgba(40, 55, 42, 0.04),
+    inset 0 0 0 1px rgba(95, 128, 99, 0.04);
 }
 
 .review-context-icon {
-  font-size: 19px;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border: 1px solid #e0e5df;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #737d74;
+  box-sizing: border-box;
+  transition:
+    background 140ms ease,
+    border-color 140ms ease,
+    color 140ms ease;
+}
+
+.review-context-icon svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
+.review-context-button:hover
+  .review-context-icon {
+  border-color: #d6ded5;
+  background: #f8faf7;
+  color: #526756;
+}
+
+.review-context-button.active
+  .review-context-icon {
+  border-color: #c9dacb;
+  background: #f8fbf8;
+  color: #4f7655;
 }
 
 .review-context-label {
-  max-width: 52px;
+  max-width: 54px;
   overflow: hidden;
   color: inherit;
-  font-size: 9px;
-  line-height: 11px;
+  font-size: 8px;
+  line-height: 10px;
   font-weight: 700;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -142,8 +182,9 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 14px 16px;
+  padding: 14px 18px;
   border-bottom: 1px solid #e5e8e3;
+  background: #ffffff;
   box-sizing: border-box;
 }
 
@@ -160,9 +201,10 @@
 .review-context-panel-header h3 {
   margin: 0;
   color: #252923;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 15px;
+  line-height: 19px;
   font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .review-context-content {
@@ -170,19 +212,26 @@
   min-width: 0;
   min-height: 0;
   overflow-y: auto;
-  padding: 16px;
+  padding: 20px 18px 24px;
   box-sizing: border-box;
+}
+
+.review-context-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.review-context-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.review-context-content::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #d8ded8;
 }
 
 /* =========================================================
    CENTER CONVERSATION
    ========================================================= */
-
-/*
-   IMPORTANT:
-   The center column owns ALL remaining horizontal space.
-   Nothing here should have a max-width.
-*/
 
 .review-conversation {
   grid-column: 2;
@@ -196,10 +245,6 @@
   box-sizing: border-box;
 }
 
-/*
-   Conversation component root
-*/
-
 .review-conversation > * {
   width: 100% !important;
   height: 100% !important;
@@ -210,20 +255,12 @@
   box-sizing: border-box;
 }
 
-/*
-   Conversation panel itself
-*/
-
 .review-conversation .conversation-panel {
   width: 100% !important;
   max-width: none !important;
   min-width: 0 !important;
   box-sizing: border-box;
 }
-
-/*
-   Transcript must occupy the complete center width.
-*/
 
 .review-conversation .conversation-transcript {
   width: 100% !important;
@@ -242,13 +279,6 @@
 /* =========================================================
    MESSAGE WIDTH
    ========================================================= */
-
-/*
-   Don't let the message content artificially shrink the
-   entire conversation.
-
-   It can use almost the entire available center area.
-*/
 
 .review-conversation .message-header,
 .review-conversation .message-bubble {
@@ -296,18 +326,15 @@
 .review-event {
   position: relative;
   display: grid;
-  grid-template-columns:
-    36px
-    12px
-    minmax(0, 1fr);
-  column-gap: 6px;
-  min-height: 76px;
+  grid-template-columns: 42px 12px minmax(0, 1fr);
+  column-gap: 7px;
+  min-height: 82px;
 }
 
 .review-event:not(:last-child)::after {
   content: '';
   position: absolute;
-  left: 49px;
+  left: 51px;
   top: 18px;
   bottom: -8px;
   width: 1px;
@@ -315,9 +342,11 @@
 }
 
 .review-event-time {
+  padding-top: 1px;
   color: #8a938c;
   font-size: 10px;
   font-weight: 600;
+  line-height: 16px;
 }
 
 .review-event-marker {
@@ -325,7 +354,7 @@
   z-index: 2;
   width: 8px;
   height: 8px;
-  margin-top: 3px;
+  margin-top: 4px;
   border-radius: 50%;
   background: #6f8f72;
   box-shadow:
@@ -335,19 +364,21 @@
 .review-event-body {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   min-width: 0;
 }
 
 .review-event-body strong {
   color: #303830;
   font-size: 11px;
+  line-height: 15px;
+  font-weight: 700;
 }
 
 .review-event-body span {
   color: #858e86;
   font-size: 10px;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 /* =========================================================
@@ -362,8 +393,8 @@
 .review-detail {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  padding: 11px 0;
+  gap: 6px;
+  padding: 13px 0;
   border-bottom: 1px solid #edf0ec;
 }
 
@@ -374,13 +405,16 @@
 .review-detail-label {
   color: #8a938b;
   font-size: 9px;
+  line-height: 12px;
   font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .review-detail-value {
   color: #303730;
   font-size: 11px;
-  line-height: 1.45;
+  line-height: 1.5;
   word-break: break-word;
 }
 
@@ -391,33 +425,42 @@
 .review-interaction-history {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .review-history-summary {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  padding-bottom: 8px;
+  gap: 6px;
+  padding-bottom: 9px;
 }
 
 .review-history-summary strong {
   color: #303830;
   font-size: 11px;
+  line-height: 15px;
   font-weight: 700;
 }
 
 .review-history-summary span {
   color: #858e86;
   font-size: 10px;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .review-customer-conversation {
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #e3e7e2;
-  border-radius: 8px;
+  border-radius: 9px;
   background: #fafbf9;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease;
+}
+
+.review-customer-conversation:hover {
+  border-color: #d7ded7;
+  background: #f8faf8;
 }
 
 .review-customer-conversation-top {
@@ -425,7 +468,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 6px;
-  margin-bottom: 7px;
+  margin-bottom: 8px;
 }
 
 .review-history-date {
@@ -435,7 +478,7 @@
 }
 
 .review-history-channel {
-  padding: 3px 5px;
+  padding: 3px 6px;
   border-radius: 5px;
   background: #e8eee8;
   color: #5f7c64;
@@ -445,16 +488,17 @@
 
 .review-customer-conversation strong {
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
   color: #303830;
   font-size: 10px;
+  line-height: 14px;
 }
 
 .review-customer-conversation > span {
   display: block;
   color: #858e86;
   font-size: 9px;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 /* =========================================================
@@ -463,32 +507,38 @@
 
 @media (max-width: 1200px) {
   .review-layout {
-    grid-template-columns:
-      60px
-      minmax(0, 1fr)
-      320px;
+    grid-template-columns: 60px minmax(0, 1fr) 320px;
   }
 
   .review-layout-panel-open {
-    grid-template-columns:
-      320px
-      minmax(0, 1fr)
-      320px;
+    grid-template-columns: 320px minmax(0, 1fr) 320px;
   }
 
   .review-context-rail {
     width: 60px;
     min-width: 60px;
     padding-top: 54px;
+    padding-left: 3px;
+    padding-right: 3px;
   }
 
   .review-context-button {
-    width: 46px;
+    width: 54px;
+    min-width: 54px;
+  }
+
+  .review-context-label {
+    max-width: 54px;
   }
 
   .review-context-panel {
     width: 260px;
     min-width: 260px;
+  }
+
+  .review-context-content {
+    padding-left: 17px;
+    padding-right: 17px;
   }
 }
 

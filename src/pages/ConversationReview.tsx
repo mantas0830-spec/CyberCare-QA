@@ -86,10 +86,6 @@ export function ConversationReview({
             : ''
         }`}
       >
-        {/* =================================================
-            LEFT CONTEXT BLOCK
-            ================================================= */}
-
         <aside className="review-context">
           <div className="review-context-rail">
             <button
@@ -103,9 +99,24 @@ export function ConversationReview({
                 togglePanel('events')
               }
               title="Events"
+              aria-label="Events"
+              aria-pressed={
+                activePanel === 'events'
+              }
             >
-              <span className="review-context-icon">
-                ◷
+              <span
+                className="review-context-icon"
+                aria-hidden="true"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                >
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="M12 7.5v5l3 1.8" />
+                </svg>
               </span>
 
               <span className="review-context-label">
@@ -124,9 +135,31 @@ export function ConversationReview({
                 togglePanel('metadata')
               }
               title="Metadata"
+              aria-label="Metadata"
+              aria-pressed={
+                activePanel === 'metadata'
+              }
             >
-              <span className="review-context-icon">
-                ⓘ
+              <span
+                className="review-context-icon"
+                aria-hidden="true"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                >
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="M12 10.5v5" />
+                  <circle
+                    cx="12"
+                    cy="7.5"
+                    r="0.7"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                </svg>
               </span>
 
               <span className="review-context-label">
@@ -148,9 +181,27 @@ export function ConversationReview({
                 )
               }
               title="Interaction history"
+              aria-label="Interaction history"
+              aria-pressed={
+                activePanel ===
+                'interaction-history'
+              }
             >
-              <span className="review-context-icon">
-                ↔
+              <span
+                className="review-context-icon"
+                aria-hidden="true"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                >
+                  <path d="M7 8h10" />
+                  <path d="M7 12h7" />
+                  <path d="M7 16h5" />
+                  <path d="M4.5 5.5h15v13h-15z" />
+                </svg>
               </span>
 
               <span className="review-context-label">
@@ -172,9 +223,27 @@ export function ConversationReview({
                 )
               }
               title="Conversation information"
+              aria-label="Conversation information"
+              aria-pressed={
+                activePanel ===
+                'conversation-information'
+              }
             >
-              <span className="review-context-icon">
-                ▣
+              <span
+                className="review-context-icon"
+                aria-hidden="true"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                >
+                  <path d="M6 4.5h12v15H6z" />
+                  <path d="M9 8h6" />
+                  <path d="M9 12h6" />
+                  <path d="M9 16h4" />
+                </svg>
               </span>
 
               <span className="review-context-label">
@@ -237,19 +306,11 @@ export function ConversationReview({
           )}
         </aside>
 
-        {/* =================================================
-            CENTER CONVERSATION BLOCK
-            ================================================= */}
-
         <main className="review-conversation">
           <Conversation
             conversation={conversation}
           />
         </main>
-
-        {/* =================================================
-            RIGHT SCORECARD BLOCK
-            ================================================= */}
 
         <aside className="review-scorecard">
           <Scorecard
@@ -313,7 +374,10 @@ function ReviewEvent({
         {time}
       </div>
 
-      <div className="review-event-marker" />
+      <div
+        className="review-event-marker"
+        aria-hidden="true"
+      />
 
       <div className="review-event-body">
         <strong>{title}</strong>

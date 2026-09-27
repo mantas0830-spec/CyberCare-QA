@@ -6,6 +6,18 @@ export type Message = {
   text: string
 }
 
+export type CategoryScores = {
+  'Conversation Personalized': number
+  'Wait Time': number
+  Grammar: number
+  'Effective Solution Provided': number
+  'Inquiry Understood': number
+  'Internal Procedures Followed': number
+  'Agent Response': number
+  'Cause of bad rating': number
+  'Reason of bad rating': number
+}
+
 export type Conversation = {
   id: string
   customer: string
@@ -15,6 +27,7 @@ export type Conversation = {
   channel: 'Chat' | 'Email'
   date: string
   score: number | null
+  categoryScores: CategoryScores | null
   status: 'Evaluated' | 'Not Evaluated'
   reviewer: string | null
   resolution: 'Resolved' | 'Not Resolved'
@@ -107,46 +120,63 @@ const conversationMessages = (
   ]
 }
 
+/*
+ * Demo category scores.
+ *
+ * These are generated from the overall conversation score so
+ * the dashboard has realistic-looking category averages.
+ */
+const createCategoryScores = (
+  score: number | null,
+): CategoryScores | null => {
+  if (score === null) {
+    return null
+  }
+
+  const clamp = (value: number) =>
+    Math.max(0, Math.min(100, value))
+
+  return {
+    'Conversation Personalized': clamp(score + 3),
+    'Wait Time': clamp(score - 2),
+    Grammar: clamp(score + 1),
+    'Effective Solution Provided': clamp(score + 4),
+    'Inquiry Understood': clamp(score + 2),
+    'Internal Procedures Followed': clamp(score - 1),
+    'Agent Response': clamp(score + 2),
+    'Cause of bad rating': clamp(score - 3),
+    'Reason of bad rating': clamp(score - 5),
+  }
+}
+
 const data = [
-  // =========================================================
-  // EVALUATED — DEMO CONVERSATION
-  // =========================================================
+  [
+    '22144512',
+    'Olivia Carter',
+    'Daniel Wilson',
+    'Account access issue',
+    'Chat',
+    'Sep 25, 2026',
+    87,
+    'Evaluated',
+    'Mantas',
+    'Resolved',
+    5,
+  ],
 
   [
-  '22144512',
-  'Olivia Carter',
-  'Daniel Wilson',
-  'Account access issue',
-  'Chat',
-  'Sep 25, 2026',
-  87,
-  'Evaluated',
-  'Mantas',
-  'Resolved',
-  5,
-],
-
-  // =========================================================
-  // NOT EVALUATED — DEMO CONVERSATION
-  // =========================================================
-
-  [
-  '22144513',
-  'Ethan Brooks',
-  'Sophie Brown',
-  'Subscription question',
-  'Chat',
-  'Sep 25, 2026',
-  null,
-  'Not Evaluated',
-  null,
-  'Resolved',
-  5,
-],
-
-  // =========================================================
-  // EVALUATED
-  // =========================================================
+    '22144513',
+    'Ethan Brooks',
+    'Sophie Brown',
+    'Subscription question',
+    'Chat',
+    'Sep 25, 2026',
+    null,
+    'Not Evaluated',
+    null,
+    'Resolved',
+    5,
+  ],
 
   [
     '22144514',
@@ -155,9 +185,9 @@ const data = [
     'Connection issue',
     'Email',
     'Sep 24, 2026',
-    0,
+    null,
     'Not Evaluated',
-    'Mantas',
+    null,
     'Resolved',
     4,
   ],
@@ -169,9 +199,9 @@ const data = [
     'Billing question',
     'Chat',
     'Sep 24, 2026',
-    0,
+    null,
     'Not Evaluated',
-    'Mantas',
+    null,
     'Not Resolved',
     3,
   ],
@@ -185,14 +215,10 @@ const data = [
     'Sep 23, 2026',
     89,
     'Evaluated',
-    'Mantas',
+    'AutoQA',
     'Resolved',
     5,
   ],
-
-  // =========================================================
-  // NOT EVALUATED
-  // =========================================================
 
   [
     '22144517',
@@ -264,10 +290,6 @@ const data = [
     3,
   ],
 
-  // =========================================================
-  // EVALUATED
-  // =========================================================
-
   [
     '22144522',
     'Charlotte Moore',
@@ -291,7 +313,7 @@ const data = [
     'Sep 20, 2026',
     78,
     'Evaluated',
-    'Mantas',
+    'AutoQA',
     'Not Resolved',
     2,
   ],
@@ -305,7 +327,7 @@ const data = [
     'Sep 19, 2026',
     96,
     'Evaluated',
-    'Mantas',
+    'AutoQA',
     'Resolved',
     5,
   ],
@@ -337,10 +359,6 @@ const data = [
     'Not Resolved',
     3,
   ],
-
-  // =========================================================
-  // NOT EVALUATED
-  // =========================================================
 
   [
     '22144527',
@@ -412,10 +430,6 @@ const data = [
     3,
   ],
 
-  // =========================================================
-  // EVALUATED
-  // =========================================================
-
   [
     '22144532',
     'Grace Nelson',
@@ -425,7 +439,7 @@ const data = [
     'Sep 15, 2026',
     90,
     'Evaluated',
-    'Mantas',
+    'AutoQA',
     'Resolved',
     5,
   ],
@@ -453,7 +467,7 @@ const data = [
     'Sep 14, 2026',
     73,
     'Evaluated',
-    'Mantas',
+    'AutoQA',
     'Not Resolved',
     2,
   ],
@@ -485,10 +499,6 @@ const data = [
     'Resolved',
     4,
   ],
-
-  // =========================================================
-  // NOT EVALUATED
-  // =========================================================
 
   [
     '22144537',
@@ -560,10 +570,6 @@ const data = [
     3,
   ],
 
-  // =========================================================
-  // EVALUATED
-  // =========================================================
-
   [
     '22144542',
     'Isla Sanchez',
@@ -573,7 +579,7 @@ const data = [
     'Sep 10, 2026',
     93,
     'Evaluated',
-    'Mantas',
+    'AutoQA',
     'Resolved',
     5,
   ],
@@ -601,7 +607,7 @@ const data = [
     'Sep 9, 2026',
     79,
     'Evaluated',
-    'Mantas',
+    'AutoQA',
     'Not Resolved',
     3,
   ],
@@ -633,10 +639,6 @@ const data = [
     'Resolved',
     4,
   ],
-
-  // =========================================================
-  // NOT EVALUATED
-  // =========================================================
 
   [
     '22144547',
@@ -708,10 +710,6 @@ const data = [
     5,
   ],
 
-  // =========================================================
-  // EVALUATED
-  // =========================================================
-
   [
     '22144552',
     'Florence Gray',
@@ -721,7 +719,7 @@ const data = [
     'Sep 5, 2026',
     89,
     'Evaluated',
-    'Mantas',
+    'AutoQA',
     'Resolved',
     4,
   ],
@@ -763,7 +761,7 @@ const data = [
     'Sep 4, 2026',
     82,
     'Evaluated',
-    'Mantas',
+    'AutoQA',
     'Not Resolved',
     3,
   ],
@@ -781,10 +779,6 @@ const data = [
     'Resolved',
     5,
   ],
-
-  // =========================================================
-  // NOT EVALUATED
-  // =========================================================
 
   [
     '22144557',
@@ -856,10 +850,6 @@ const data = [
     4,
   ],
 
-  // =========================================================
-  // EVALUATED
-  // =========================================================
-
   [
     '22144562',
     'Ruby Cole',
@@ -883,7 +873,7 @@ const data = [
     'Aug 31, 2026',
     92,
     'Evaluated',
-    'Mantas',
+    'AutoQA',
     'Resolved',
     5,
   ],
@@ -897,7 +887,7 @@ const data = [
     'Aug 30, 2026',
     74,
     'Evaluated',
-    'Mantas',
+    'AutoQA',
     'Not Resolved',
     2,
   ],
@@ -930,6 +920,8 @@ const data = [
     csat,
   ] = item
 
+  const typedScore = score as number | null
+
   return {
     id: id as string,
     customer: customer as string,
@@ -938,12 +930,11 @@ const data = [
     subject: subject as string,
     channel: channel as 'Chat' | 'Email',
     date: date as string,
-    score: score as number | null,
-    status:
-      status as 'Evaluated' | 'Not Evaluated',
+    score: typedScore,
+    categoryScores: createCategoryScores(typedScore),
+    status: status as 'Evaluated' | 'Not Evaluated',
     reviewer: reviewer as string | null,
-    resolution:
-      resolution as 'Resolved' | 'Not Resolved',
+    resolution: resolution as 'Resolved' | 'Not Resolved',
     csat: csat as number | null,
     messages: conversationMessages(
       customer as string,
@@ -954,5 +945,4 @@ const data = [
   }
 })
 
-export const conversations: Conversation[] =
-  data
+export const conversations: Conversation[] = data
